@@ -17,7 +17,7 @@ class Server{
 
     config(): void{
         this.app.set('port', process.env.PORT || 3000);
-        this.app.use(morgan('dev')); //mostrar peticiones al servidor
+        this.app.use(morgan('dev')); //mostrar en consola peticiones que se hacen al servidor
         this.app.use(cors());
         this.app.use(express.json());
     }

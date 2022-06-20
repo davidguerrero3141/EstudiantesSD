@@ -17,7 +17,7 @@ class Server {
     }
     config() {
         this.app.set('port', process.env.PORT || 3000);
-        this.app.use((0, morgan_1.default)('dev')); //mostrar peticiones al servidor
+        this.app.use((0, morgan_1.default)('dev')); //mostrar en consola peticiones que se hacen al servidor
         this.app.use((0, cors_1.default)());
         this.app.use(express_1.default.json());
     }

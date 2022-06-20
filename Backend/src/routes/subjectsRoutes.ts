@@ -1,4 +1,5 @@
 import {Router} from 'express';
+import {subjectsController} from '../controllers/subjectsController'
 
 class SubjectsRoutes{
     
@@ -9,7 +10,7 @@ class SubjectsRoutes{
     }
 
     config(): void{
-        this.router.get('/', (req, res) => res.send('Materias'));
+        this.router.get('/',subjectsController.index);
     }
 }
 

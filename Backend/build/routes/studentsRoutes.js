@@ -8,7 +8,11 @@ class StudentsRoutes {
         this.config();
     }
     config() {
-        this.router.get('/', studentsController_1.studentsController.index);
+        this.router.get('/', studentsController_1.studentsController.list);
+        this.router.get('/:id', studentsController_1.studentsController.getId);
+        this.router.post('/', studentsController_1.studentsController.create);
+        this.router.delete('/:id', studentsController_1.studentsController.delete);
+        this.router.put('/:id', studentsController_1.studentsController.update);
     }
 }
 const studentsRoutes = new StudentsRoutes();

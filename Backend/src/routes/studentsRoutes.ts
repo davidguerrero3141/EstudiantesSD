@@ -10,7 +10,11 @@ class StudentsRoutes{
     }
 
     config(): void{
-        this.router.get('/',studentsController.index);
+        this.router.get('/',studentsController.list);
+        this.router.get('/:id', studentsController.getId);
+        this.router.post('/', studentsController.create);
+        this.router.delete('/:id', studentsController.delete );
+        this.router.put('/:id', studentsController.update );
     }
 }
 

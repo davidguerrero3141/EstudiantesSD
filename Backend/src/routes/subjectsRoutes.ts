@@ -10,7 +10,11 @@ class SubjectsRoutes{
     }
 
     config(): void{
-        this.router.get('/',subjectsController.index);
+        this.router.get('/',subjectsController.list);
+        this.router.get('/:id', subjectsController.getId );
+        this.router.post('/', subjectsController.create);
+        this.router.delete('/:id', subjectsController.delete );
+        this.router.put('/:id', subjectsController.update );
     }
 }
 

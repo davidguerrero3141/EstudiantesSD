@@ -21,3 +21,14 @@ CREATE TABLE MATERIAS(
     estado BOOLEAN NOT NULL DEFAULT 0,
     PRIMARY KEY(id_materia)
 );
+
+CREATE TABLE INSCRIPCION_MATERIAS(
+    id_estudiante INT NOT NULL,
+    id_materia INT NOT NULL,
+    PRIMARY KEY(id_estudiante,id_materia)
+);
+
+ALTER TABLE INSCRIPCION_MATERIAS ADD (
+    CONSTRAINT ins_fk_ide FOREIGN KEY (id_estudiante) REFERENCES ESTUDIANTES(id_estudiante),
+    CONSTRAINT ins_fk_idm FOREIGN KEY (id_materia) REFERENCES MATERIAS(id_materia)
+);

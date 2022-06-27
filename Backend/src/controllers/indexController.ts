@@ -3,7 +3,7 @@ import {Request, Response } from 'express';
 class IndexController {
 
     index(req: Request, res: Response) {
-        res.send('Hola')
+        res.send('Aplicacion Estudiantes')
     }
 } 
 

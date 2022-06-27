@@ -13,6 +13,7 @@ class SubjectsRoutes {
         this.router.post('/', subjectsController_1.subjectsController.create);
         this.router.delete('/:id', subjectsController_1.subjectsController.delete);
         this.router.put('/:id', subjectsController_1.subjectsController.update);
+        this.router.patch('/:id', subjectsController_1.subjectsController.patch);
     }
 }
 const subjectsRoutes = new SubjectsRoutes();

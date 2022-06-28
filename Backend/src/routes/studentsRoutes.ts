@@ -12,9 +12,12 @@ class StudentsRoutes{
     config(): void{
         this.router.get('/',studentsController.list);
         this.router.get('/:id', studentsController.getId);
+        this.router.get('/documento/:id', studentsController.getDocument);
+        this.router.get('/codigo/:id', studentsController.getByCode);
         this.router.post('/', studentsController.create);
         this.router.delete('/:id', studentsController.delete );
-        this.router.put('/:id', studentsController.update );
+        this.router.put('/:id', studentsController.updateStudent );
+        this.router.patch('/:id', studentsController.setState);
     }
 }
 

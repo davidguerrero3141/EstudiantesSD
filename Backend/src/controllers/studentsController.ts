@@ -19,6 +19,20 @@ class StudentsController {
           });
     }
 
+    public getByCode(req: Request, res: Response) {
+        const estudiantes = pool.query('select * from estudiantes where codigo = ?', req.params.id, function (err, results, fields) {
+            res.json(results);
+            console.log(err);
+        });
+    }
+
+    public getDocument(req: Request, res: Response) {
+        const estudiantes = pool.query('select * from estudiantes where numero_documento = ?', req.params.id, function (err, results, fields) {
+            res.json(results);
+            console.log(err);
+        });
+    }
+
     public async create(req: Request, res: Response) {
         pool.query('INSERT INTO estudiantes set ?', [req.body], function(err, results, fields) {
             console.log(err);
@@ -31,8 +45,20 @@ class StudentsController {
         res.json({text: 'Eliminado un estudiante ' + req.params.id});
     }
 
-    public update(req: Request, res: Response) {
-        res.json({text: 'actualizando un estudiante ' + req.params.id});
+    public updateStudent(req: Request, res: Response) {
+        const {id} = req.params;
+        pool.query('UPDATE estudiantes set ? WHERE id_estudiante = ?', [req.body, id], (err, results, fields) => {
+            console.log(err);
+        });
+        res.json({text: 'actualizando el estudiante: '  + req.params.id});
+    }
+
+    public setState(req: Request, res: Response) {
+        const {id} = req.params;
+        pool.query('UPDATE estudiantes set estado = ? WHERE id_estudiante = ?', [req.body.estado, id], (err, results, fields) => {
+            console.log(err);
+        });
+        res.json({text: 'cambiando el estado del estudiante: '  + req.params.id});
     }
 }
 

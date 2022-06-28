@@ -5,60 +5,132 @@ import pool from '../database'
 class StudentsController {
 
     public list(req: Request, res: Response) {
-       const estudiantes =  pool.query('select * from estudiantes', function(err, results, fields) {
-        res.json(results);
-        console.log(err);
-      });
+        const estudiantes = pool.query('select * from estudiantes', function (err, results, fields) {
+            if (err) {
+            } else if (!results) {
+                res.status(204).json({
+                    status: '204',
+                    result: 'No se encontró ningun registro que coincida con los parametros dados'
+                });
+            } else {
+                res.status(200).json({
+                    status: '200',
+                    result: results
+                });
+            }
+        });
 
     }
 
-    public getId(req: Request, res: Response){
-        const estudiantes =  pool.query('select * from estudiantes where id_estudiante = ?',req.params.id, function(err, results, fields) {
-            res.json(results);
-            console.log(err);
-          });
+    public getId(req: Request, res: Response) {
+        const estudiantes = pool.query('select * from estudiantes where id_estudiante = ?', req.params.id, function (err, results, fields) {
+            if (err) {
+            } else if (!results) {
+                res.status(204).json({
+                    status: '204',
+                    result: 'No se encontró ningun registro que coincida con los parametros dados'
+                });
+            } else {
+                res.status(200).json({
+                    status: '200',
+                    result: results
+                });
+            }
+        });
     }
 
     public getByCode(req: Request, res: Response) {
         const estudiantes = pool.query('select * from estudiantes where codigo = ?', req.params.id, function (err, results, fields) {
-            res.json(results);
-            console.log(err);
+            if (err) {
+            } else if (!results) {
+                res.status(204).json({
+                    status: '204',
+                    result: 'No se encontró ningun registro que coincida con los parametros dados'
+                });
+            } else {
+                res.status(200).json({
+                    status: '200',
+                    result: results
+                });
+            }
         });
     }
 
     public getDocument(req: Request, res: Response) {
         const estudiantes = pool.query('select * from estudiantes where numero_documento = ?', req.params.id, function (err, results, fields) {
-            res.json(results);
-            console.log(err);
+            if (err) {
+            } else if (!results) {
+                res.status(204).json({
+                    status: '204',
+                    result: 'No se encontró ningun registro que coincida con los parametros dados'
+                });
+            } else {
+                res.status(200).json({
+                    status: '200',
+                    result: results
+                });
+            }
         });
     }
 
     public async create(req: Request, res: Response) {
-        pool.query('INSERT INTO estudiantes set ?', [req.body], function(err, results, fields) {
-            console.log(err);
-          });
+        pool.query('INSERT INTO estudiantes set ?', [req.body], function (err, results, fields) {
+            if (err) {
+            } else if (!results) {
+                res.status(204).json({
+                    status: '204',
+                    message: err
+                });
+            } else {
+                res.status(200).json({
+                    status: '200',
+                    message: 'Se agrego un nuevo estudiante'
+                });
+            }
+
+        });
         //await pool.execute('INSERT INTO estudiantes (numero_documento, tipo_documento, nombre, apellido, codigo) values ("' + req.body.numero_documento+'","'+req.body.tipo_documento+'","'+req.body.nombre+'","'+req.body.apellido+'","'+req.body.codigo+'");');
-        res.json({ text: 'Se guardo un estudiante' });
+ 
     }
 
     public delete(req: Request, res: Response) {
-        res.json({text: 'Eliminado un estudiante ' + req.params.id});
+        res.json({ text: 'Eliminado un estudiante ' + req.params.id });
     }
 
     public updateStudent(req: Request, res: Response) {
-        const {id} = req.params;
+        const { id } = req.params;
         pool.query('UPDATE estudiantes set ? WHERE id_estudiante = ?', [req.body, id], (err, results, fields) => {
-            console.log(err);
+            if (err) {
+            } else if (!results) {
+                res.status(204).json({
+                    status: '204',
+                    message: err
+                });
+            } else {
+                res.status(200).json({
+                    status: '200',
+                    message: 'Se actualizo la informacion de un estudiante'
+                });
+            }
         });
-        res.json({text: 'actualizando el estudiante: '  + req.params.id});
     }
 
     public setState(req: Request, res: Response) {
-        const {id} = req.params;
+        const { id } = req.params;
         pool.query('UPDATE estudiantes set estado = ? WHERE id_estudiante = ?', [req.body.estado, id], (err, results, fields) => {
-            console.log(err);
+            if (err) {
+            } else if (!results) {
+                res.status(204).json({
+                    status: '204',
+                    message: err
+                });
+            } else {
+                res.status(200).json({
+                    status: '200',
+                    message: 'Se actualizo el estado de un estudiante'
+                });
+            }
         });
-        res.json({text: 'cambiando el estado del estudiante: '  + req.params.id});
     }
 }
 

@@ -9,6 +9,10 @@ class StudentsController {
     list(req, res) {
         const estudiantes = database_1.default.query('select * from estudiantes', function (err, results, fields) {
             if (err) {
+                res.status(400).json({
+                    status: 'error 400',
+                    message: err.message
+                });
             }
             else if (!results) {
                 res.status(204).json({
@@ -27,6 +31,10 @@ class StudentsController {
     getId(req, res) {
         const estudiantes = database_1.default.query('select * from estudiantes where id_estudiante = ?', req.params.id, function (err, results, fields) {
             if (err) {
+                res.status(400).json({
+                    status: 'error 400',
+                    message: err.message
+                });
             }
             else if (!results) {
                 res.status(204).json({
@@ -45,6 +53,10 @@ class StudentsController {
     getByCode(req, res) {
         const estudiantes = database_1.default.query('select * from estudiantes where codigo = ?', req.params.id, function (err, results, fields) {
             if (err) {
+                res.status(400).json({
+                    status: 'error 400',
+                    message: err.message
+                });
             }
             else if (!results) {
                 res.status(204).json({
@@ -63,6 +75,10 @@ class StudentsController {
     getDocument(req, res) {
         const estudiantes = database_1.default.query('select * from estudiantes where numero_documento = ?', req.params.id, function (err, results, fields) {
             if (err) {
+                res.status(400).json({
+                    status: 'error 400',
+                    message: err.message
+                });
             }
             else if (!results) {
                 res.status(204).json({
@@ -83,8 +99,8 @@ class StudentsController {
             if (err) {
             }
             else if (!results) {
-                res.status(204).json({
-                    status: '204',
+                res.status(400).json({
+                    status: 'error 400',
                     message: err
                 });
             }
@@ -106,8 +122,8 @@ class StudentsController {
             if (err) {
             }
             else if (!results) {
-                res.status(204).json({
-                    status: '204',
+                res.status(400).json({
+                    status: 'error 400',
                     message: err
                 });
             }
@@ -125,8 +141,8 @@ class StudentsController {
             if (err) {
             }
             else if (!results) {
-                res.status(204).json({
-                    status: '204',
+                res.status(400).json({
+                    status: 'error 400',
                     message: err
                 });
             }

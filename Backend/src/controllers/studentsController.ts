@@ -7,6 +7,10 @@ class StudentsController {
     public list(req: Request, res: Response) {
         const estudiantes = pool.query('select * from estudiantes', function (err, results, fields) {
             if (err) {
+                res.status(400).json({
+                    status: 'error 400',
+                    message: err.message
+                });
             } else if (!results) {
                 res.status(204).json({
                     status: '204',
@@ -25,6 +29,10 @@ class StudentsController {
     public getId(req: Request, res: Response) {
         const estudiantes = pool.query('select * from estudiantes where id_estudiante = ?', req.params.id, function (err, results, fields) {
             if (err) {
+                res.status(400).json({
+                    status: 'error 400',
+                    message: err.message
+                });
             } else if (!results) {
                 res.status(204).json({
                     status: '204',
@@ -42,6 +50,10 @@ class StudentsController {
     public getByCode(req: Request, res: Response) {
         const estudiantes = pool.query('select * from estudiantes where codigo = ?', req.params.id, function (err, results, fields) {
             if (err) {
+                res.status(400).json({
+                    status: 'error 400',
+                    message: err.message
+                });
             } else if (!results) {
                 res.status(204).json({
                     status: '204',
@@ -59,6 +71,10 @@ class StudentsController {
     public getDocument(req: Request, res: Response) {
         const estudiantes = pool.query('select * from estudiantes where numero_documento = ?', req.params.id, function (err, results, fields) {
             if (err) {
+                res.status(400).json({
+                    status: 'error 400',
+                    message: err.message
+                });
             } else if (!results) {
                 res.status(204).json({
                     status: '204',
@@ -77,8 +93,8 @@ class StudentsController {
         pool.query('INSERT INTO estudiantes set ?', [req.body], function (err, results, fields) {
             if (err) {
             } else if (!results) {
-                res.status(204).json({
-                    status: '204',
+                res.status(400).json({
+                    status: 'error 400',
                     message: err
                 });
             } else {
@@ -102,8 +118,8 @@ class StudentsController {
         pool.query('UPDATE estudiantes set ? WHERE id_estudiante = ?', [req.body, id], (err, results, fields) => {
             if (err) {
             } else if (!results) {
-                res.status(204).json({
-                    status: '204',
+                res.status(400).json({
+                    status: 'error 400',
                     message: err
                 });
             } else {
@@ -120,8 +136,8 @@ class StudentsController {
         pool.query('UPDATE estudiantes set estado = ? WHERE id_estudiante = ?', [req.body.estado, id], (err, results, fields) => {
             if (err) {
             } else if (!results) {
-                res.status(204).json({
-                    status: '204',
+                res.status(400).json({
+                    status: 'error 400',
                     message: err
                 });
             } else {

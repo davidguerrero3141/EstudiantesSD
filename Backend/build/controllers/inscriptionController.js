@@ -29,9 +29,9 @@ class InscriptionController {
         });
     }
     getId(req, res) {
-        console.log(req.params);
+       
         const materias = database_1.default.query('select * from inscripcion_materias where id_materia = ? and id_estudiante = ?', [req.params.idm, req.params.ide], (err, results, fields) => {
-            // res.json(results);
+            
             console.log(err);
             if (err) {
                 res.status(400).json({
@@ -68,7 +68,7 @@ class InscriptionController {
                 });
             }
         });
-        // res.json({ text: 'Se realizó la inscripcion de materia' });
+        
     }
     delete(req, res) {
         res.json({ text: 'Eliminado una materia ' + req.params.idm });
@@ -90,7 +90,7 @@ class InscriptionController {
                 });
             }
         });
-        // res.json({ text: 'actualizando inscripción de materia ' + req.params.idm });
+        
     }
     patch(req, res) {
         const { id } = req.params;
@@ -110,7 +110,7 @@ class InscriptionController {
             }
 
         });
-        // res.json({ text: 'actualizando cambiado el estado de inscripcion de la materia ' + req.params.idm });
+        
     }
 }
 exports.inscriptionController = new InscriptionController();

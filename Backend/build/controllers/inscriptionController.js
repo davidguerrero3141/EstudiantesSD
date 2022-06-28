@@ -8,7 +8,6 @@ const database_1 = __importDefault(require("../database"));
 class InscriptionController {
     list(req, res) {
         const inscripciones = database_1.default.query('select * from inscripcion_materias', (err, results, fields) => {
-            res.json(results);
             console.log(err);
             if (err) {
                 res.status(400).json({
@@ -22,12 +21,16 @@ class InscriptionController {
                     status: '204',
                     result: 'No se encontró ningun registro que coincida con los parametros dados'
                 });
+                return;
+
             }
             else {
                 res.status(200).json({
                     status: '200',
                     result: results
                 });
+                return;
+
             }
         });
     }
@@ -46,12 +49,16 @@ class InscriptionController {
                     status: '204',
                     result: 'No se encontró ningun registro que coincida con los parametros dados'
                 });
+                return;
+
             }
             else {
                 res.status(200).json({
                     status: '200',
                     result: results
                 });
+                return;
+
             }
         });
     }
@@ -70,6 +77,8 @@ class InscriptionController {
                     status: '200',
                     message: 'Se realizó la inscripcion de materia'
                 });
+                return;
+
             }
         });
     }
@@ -91,6 +100,8 @@ class InscriptionController {
                     status: '200',
                     message: 'Se actualizó la inscripción de materia ' + req.params.idm
                 });
+                return;
+
             }
         });
     }
@@ -109,6 +120,8 @@ class InscriptionController {
                     status: '200',
                     message: 'Se cambío el estado de la inscripción'
                 });
+                return;
+
             }
         });
     }

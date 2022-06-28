@@ -27,7 +27,7 @@ class Server{
         this.app.use(indexRoutes);
         this.app.use('/Estudiantes', studentsRoutes);
         this.app.use('/Materias', subjectsRoutes);
-        this.app.use('Inscripcion', inscriptionRoutes);
+        this.app.use('/Inscripcion', inscriptionRoutes);
     }
     start(): void{
         this.app.listen(this.app.get('port'), ()=>{

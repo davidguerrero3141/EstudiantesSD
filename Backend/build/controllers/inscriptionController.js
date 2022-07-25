@@ -8,7 +8,6 @@ const database_1 = __importDefault(require("../database"));
 class InscriptionController {
     list(req, res) {
         const inscripciones = database_1.default.query('select * from inscripcion_materias', (err, results, fields) => {
-            res.json(results);
             console.log(err);
             if (err) {
                 res.status(400).json({

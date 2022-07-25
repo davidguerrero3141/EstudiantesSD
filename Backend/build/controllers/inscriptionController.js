@@ -16,7 +16,7 @@ class InscriptionController {
                 });
                 return;
             }
-            else if (!results) {
+            else if (results.length == 0) {
                 res.status(204).json({
                     status: '204',
                     result: 'No se encontró ningun registro que coincida con los parametros dados'

@@ -30,19 +30,9 @@ CREATE TABLE INSCRIPCION_MATERIAS(
 );
 
 
-CREATE TABLE HISTORIAL_INSCRIPCIONES(
-    fecha_inscripcion DATE NOT NULL,
-    ip_origen VARCHAR(39) NOT NULL,
-    evento VARCHAR(2) NOT NULL,
-    PRIMARY KEY(id_estudiante,id_materia)
-);
 
 ALTER TABLE INSCRIPCION_MATERIAS ADD (
     CONSTRAINT ins_fk_ide FOREIGN KEY (id_estudiante) REFERENCES ESTUDIANTES(id_estudiante),
     CONSTRAINT ins_fk_idm FOREIGN KEY (id_materia) REFERENCES MATERIAS(id_materia)
 );
 
-ALTER TABLE HISTORIAL_INSCRIPCIONES ADD (
-    CONSTRAINT his_fk_ide FOREIGN KEY (id_estudiante) REFERENCES ESTUDIANTES(id_estudiante),
-    CONSTRAINT his_fk_idm FOREIGN KEY (id_materia) REFERENCES MATERIAS(id_materia)
-);

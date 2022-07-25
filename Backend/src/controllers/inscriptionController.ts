@@ -5,7 +5,6 @@ class InscriptionController {
     
     public list(req: Request, res: Response) {
      const inscripciones =  pool.query('select * from inscripcion_materias', (err, results, fields) => {
-        res.json(results);
         console.log(err);
         if (err) {
             res.status(400).json({
